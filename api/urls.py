@@ -6,7 +6,7 @@ from rest_framework.routers import DefaultRouter
 from accounts.routes import routes as accounts_routes
 from products.routes import routes as products_routes
 
-router = DefaultRouter(trailing_slash=False)
+router = DefaultRouter()
 
 '''
 DefaultRouter Routing
