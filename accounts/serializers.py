@@ -6,7 +6,7 @@ User = get_user_model()
 
 class UserSerializer(serializers.ModelSerializer):
     def validate_password(self, data):
-        return PasswordSerializer(data={ 'password': data })
+        return PasswordSerializer(data={'password': data})
 
     def create(self, validated_data):
         user = super(UserSerializer, self).create(validated_data)
@@ -18,7 +18,7 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ['id', 'username', 'email', 'password']
         extra_kwargs = {
-            'password': { 'write_only': True },
+            'password': {'write_only': True},
         }
 
 class PasswordSerializer(serializers.Serializer):
