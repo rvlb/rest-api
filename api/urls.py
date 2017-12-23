@@ -6,7 +6,32 @@ from rest_framework.routers import DefaultRouter
 from accounts.routes import routes as accounts_routes
 from products.routes import routes as products_routes
 
-router = DefaultRouter()
+router = DefaultRouter(trailing_slash=False)
+
+'''
+DefaultRouter Routing
+
+Basic methods
+
+{route}/
+GET => list()
+POST => create()
+
+{route}/{lookup}/
+GET => retrieve()
+PUT => update()
+DELETE => destroy()
+
+---
+
+Custom methods
+
+{route}/{method_name}/
+methods => @list_route(methods=['get']) method_name()
+
+{route}/{lookup}/{method_name}/
+methods => @detail_route(methods=['get']) method_name()
+'''
 
 routes = accounts_routes + products_routes
 for route in routes:
