@@ -24,6 +24,10 @@ class UserViewSet(MixedPermissionsMixin, viewsets.ModelViewSet):
         'change_password': [IsSelf],
     }
 
+    '''
+    Override create so we can pass the 
+    generated token to the response
+    '''
     def create(self, request):
         response = super(UserViewSet, self).create(request)
         # Add new user's token to the response
