@@ -5,7 +5,6 @@ from rest_framework.routers import DefaultRouter
 from rest_framework.authtoken.views import obtain_auth_token
 
 from accounts.routes import routes as accounts_routes
-from products.routes import routes as products_routes
 
 router = DefaultRouter()
 
@@ -34,7 +33,7 @@ methods => @list_route(methods=['get']) method_name()
 methods => @detail_route(methods=['get']) method_name()
 '''
 
-routes = accounts_routes + products_routes
+routes = accounts_routes
 for route in routes:
     router.register(route[0], route[1])
 
