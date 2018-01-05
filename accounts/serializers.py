@@ -10,7 +10,17 @@ class UserSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         user = super(UserSerializer, self).create(validated_data)
-        user.set_password(validated_data.get('password'))
+        '''
+        Extract the password serializer from 
+        validated_data and check if it's ok
+        '''
+        password_serializer = validated_data.get('password')
+        password_serializer.is_valid(raise_exception=True)
+        '''
+        Everything is fine, set the validated password to the created user
+        '''
+        password = password_serializer.validated_data.get('password')
+        user.set_password(password)
         user.save()
         return user
 
